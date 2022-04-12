@@ -15,9 +15,19 @@ namespace Test
 			Testing testingObj;
 			Assert::AreEqual(testingObj.doSomething(3), 3 * 2);
 		}
+
 		TEST_METHOD(TestLettersInWords)
 		{
-			Assert::AreEqual(sorter.lettersInWords(), { 1, 2, 3 });
+			int arr1[] = { 1, 2, 3 };
+			int arr2[] = { 1, 2, 3 }; //repalce with function
+			bool equal;
+
+
+			if (std::equal(std::begin(arr1), std::end(arr1), std::begin(arr2)))
+				equal = true;
+			else
+				equal = false;
+			Assert::IsTrue(equal);
 		}
 	};
 }
