@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <sstream>
+#include <vector>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -28,6 +29,27 @@ const tuple<string, map<char, int>> testStrings[9] = {
 	// digit test cases
 	{ "numb3er5", { {'N', 1}, {'U', 1}, {'M', 1}, {'B', 1}, {'3', 1}, {'E', 1}, {'R', 1}, {'5', 1} } },
 	{ "77301", { {'7', 2}, {'3', 1}, {'0', 1}, {'1', 1} } }
+};
+
+const tuple<string, vector<int>> testWords[8] = {
+	//few words
+	{"a", {1}},
+	{"abcd ab a", {4, 2, 1} },
+
+	//lots of short words
+	{"abc abc abc abc abc abc abc abc abc abc", {3, 3, 3, 3, 3, 3, 3, 3, 3, 3}},
+	{"a a a a a a a a a a", {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}},
+
+	//white space and empty
+	{"  \n\t  \n ", {0}},
+	{"", {0}},
+
+	//huge word
+	{"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", {100}},
+
+	//mix
+	{"thi\ns sente\tnce has \n\n special \r characters", {4, 8, 3, 7, 10}}
+	{"this sentence\t is used\n\n to test if a large mix of superfluous words can indubitably show this \t\t\t works", {4, 8, 2, 4, 2, 4, 2, 1, 5, 3, 2, 11, 5, 3, 11, 4, 4, 5}}
 };
 
 const char whiteSpaceChars[3] = { ' ', '\n', '\t' };
@@ -97,16 +119,27 @@ namespace Test
 
 		TEST_METHOD(TestLettersInWords)
 		{
-			int arr1[] = { 1, 2, 3 };
-			int arr2[] = { 1, 2, 3 }; //repalce with function
-			bool equal;
+			// setup
+			SortMachine sorter;
+			stringstream forLogger;		
+			vector<int> result;
 
+			// loop through all test cases
+			for (int i = 0; i < size(testWords); i++) {
+				//current test string and expected vector
+				string test = get<0>(testWords[i]);
+				vector<int> expectedVector = get<1>(testWords[i]);
 
-			if (std::equal(std::begin(arr1), std::end(arr1), std::begin(arr2)))
-				equal = true;
-			else
-				equal = false;
-			Assert::IsTrue(equal);
+				// some debug output so Lenora doesn't lose her mind
+				forLogger << "Running test case for string '" << test << "'.\n";
+				Logger::WriteMessage(forLogger.str().c_str());
+
+				// call getWordLengths on current line
+				result = sorter.getWordLengths(test);
+
+				// assert that the expected and observed are equal
+				Assert::IsTrue(expectedVector == result);
+			}
 		}
 	};
 

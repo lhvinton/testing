@@ -1,5 +1,6 @@
 #include <string>
 #include <map>
+#include <vector>
 
 #pragma once
 
@@ -10,4 +11,5 @@ public:
 	SortMachine();
 	~SortMachine();
 	map<char, int> getLetterFrequencies(string input);
+	vector<int> getWordLengths(string input);
 };
