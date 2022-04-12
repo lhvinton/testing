@@ -1,3 +1,0 @@
-﻿  Testing.cpp
-MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
-C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner project\testing\Testing\x64\Debug\Testing.exe : fatal error LNK1120: 1 unresolved externals
