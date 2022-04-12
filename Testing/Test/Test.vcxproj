@@ -168,8 +168,8 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Project1\Project1.vcxproj">
-      <Project>{feec1e6a-5d79-403d-882e-2bdd80eab67e}</Project>
+    <ProjectReference Include="..\SortMachine\SortMachine.vcxproj">
+      <Project>{e6972454-14b0-4b07-8594-045b5194495f}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

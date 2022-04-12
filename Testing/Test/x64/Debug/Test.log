@@ -1,5 +1,3 @@
-﻿  pch.cpp
-  Test.cpp
-     Creating library C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner project\testing\Testing\x64\Debug\Test.lib and object C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner project\testing\Testing\x64\Debug\Test.exp
-Test.obj : error LNK2019: unresolved external symbol "public: int __cdecl Testing::doSomething(int)" (?doSomething@Testing@@QEAAHH@Z) referenced in function "public: void __cdecl Test::Test::TestMethod1(void)" (?TestMethod1@Test@1@QEAAXXZ)
-C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner project\testing\Testing\x64\Debug\Test.dll : fatal error LNK1120: 1 unresolved externals
+﻿  Test.cpp
+     Creating library C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner proj\testing\Testing\x64\Debug\Test.lib and object C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner proj\testing\Testing\x64\Debug\Test.exp
+  Test.vcxproj -> C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner proj\testing\Testing\x64\Debug\Test.dll
