@@ -1,4 +1,4 @@
-#include "Testing.h"
+#include "SortMachine.h"
 
 int Testing::doSomething(int input) {
 	return input * 2;
