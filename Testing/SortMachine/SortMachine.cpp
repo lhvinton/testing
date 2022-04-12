@@ -11,7 +11,7 @@ SortMachine::~SortMachine()
 }
 
 map<char, int> SortMachine::getLetterFrequencies(string input) {
-	map<char, int> frequencies = { {'A', 1} };
+	map<char, int> frequencies;
 	return frequencies;
 }
 
