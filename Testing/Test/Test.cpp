@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../Project1/Testing.h"
+#include "../Project1/Testing.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
