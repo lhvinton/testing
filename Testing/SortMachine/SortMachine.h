@@ -11,5 +11,6 @@ public:
 	SortMachine();
 	~SortMachine();
 	map<char, int> getLetterFrequencies(string input);
+	map<char, int> transformVowels(string input);
 	vector<int> getWordLengths(string input);
 };
