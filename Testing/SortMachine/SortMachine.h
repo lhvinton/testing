@@ -1,6 +1,8 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <algorithm>
+#include <cctype>
 
 #pragma once
 
@@ -13,4 +15,8 @@ public:
 	map<char, int> getLetterFrequencies(string input);
 	map<char, int> transformVowels(string input);
 	vector<int> getWordLengths(string input);
+	string inMorse(string input);
+
+private:
+	bool isUpperVowel(char input);
 };

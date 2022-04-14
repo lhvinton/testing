@@ -11,12 +11,38 @@ SortMachine::~SortMachine()
 }
 
 map<char, int> SortMachine::getLetterFrequencies(string input) {
-	map<char, int> frequencies;
+	map<char, int> frequencies = map<char, int>();
+
+	// remove all whitespace chars
+	for (int i = 0; i < *(&whiteSpaceChars + 1) - whiteSpaceChars; i++) {
+		input.erase(std::remove(input.begin(), input.end(), whiteSpaceChars[i]), input.end());
+	}
+
+	string::iterator stringIt;
+
+	// traverse the string
+	for (stringIt = input.begin(); stringIt != input.end(); stringIt++) {
+		// add to map
+		frequencies[toupper(*stringIt)]++;
+	}
+
 	return frequencies;
 }
 
 map<char, int> SortMachine::transformVowels(string input) {
 	map<char, int> frequencies;
+	char vowels[5] = { 'A', 'E', 'I', 'O', 'U' };
+	frequencies = getLetterFrequencies(input);
+	map<char, int>::iterator currentChar;
+
+	for (int i = 0; i < sizeof(vowels); i++) {
+		currentChar = frequencies.find(vowels[i]);
+		if (currentChar != frequencies.end()) {
+			frequencies[vowels[i] + 1] += currentChar->second;
+			frequencies.erase(currentChar);
+		}
+	}
+
 	return frequencies;
 }
 
@@ -52,6 +78,15 @@ vector<int> SortMachine::getWordLengths(string input) {
 	}
 
 	return wordLengths;
+}
+
+string SortMachine::inMorse(string input) {
+	return "... .... . . ... ....";
+}
+
+bool SortMachine::isUpperVowel(char input) {
+	return (input == 'A' || input == 'E' || input == 'I'
+		|| input == 'O' || input == 'U');
 }
 
 int main() {
