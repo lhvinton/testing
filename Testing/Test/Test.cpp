@@ -70,6 +70,10 @@ const tuple<string, map<char, int>> testVowelIncreaseStrings[9] = {
 	{ "BCDFGHJKLMNPQRSTVWXYZ", { {'B', 1}, {'C', 1}, {'D', 1}, {'F', 1}, {'G', 1}, {'H', 1}, {'J', 1}, {'K', 1}, {'L', 1}, {'M', 4}, {'N', 1}, {'P', 4}, {'Q', 1}, {'R', 1}, {'S', 1}, {'T', 1}, {'V', 1}, {'W', 1}, {'X', 1}, {'Y', 1}, {'Z', 1} } },
 };
 
+const tuple<string, string> testMorse[9] = {
+	{"abc", ".- -... -.-."}
+}
+
 
 const char whiteSpaceCharsTest[4] = { ' ', '\n', '\t', '\r'};
 namespace Test
@@ -136,6 +140,14 @@ namespace Test
 			}
 		}
 
+		/*
+		* Test the amount of letters in each word
+		*  - returns a vector containing the count of letters in each word
+		*  - return a vector with 0 on whitespace only or empty string
+		*  - returns in word order of sentence
+		*  - works with punctuation
+		*  - works with numbers
+		*/
 		TEST_METHOD(TestLettersInWords)
 		{
 			// setup
@@ -215,6 +227,42 @@ namespace Test
 				for (int i = 0; i < size(whiteSpaceCharsTest); i++) {
 					Assert::IsFalse(result.count(whiteSpaceCharsTest[i]));
 				}
+			}
+		}
+
+		/*
+		* Translates each letter into its morse equivilant
+		* - prints "|" between each sentence
+		* - prints whitespace between each letter
+		* - prints "/" between each word
+		* - if character has no morse translation print that character
+		* - a gift :)
+		* - https://www.cryptomuseum.com/radio/morse/
+		*  
+		* 
+		*/
+		TEST_METHOD(TestMorseTranslator) {
+			// setup
+			SortMachine sorter;
+			stringstream forLogger;
+			vector<int> result;
+			string test, expected;
+
+			// loop through all test cases
+			for (int i = 0; i < size(testMorse); i++) {
+				//current test string and expected string
+				test = get<0>(testMorse[i]);
+				expected = get<1>(testMorse[i]);
+
+				// some debug output so Lenora doesn't lose her mind
+				forLogger << "Running test case for string '" << test << "'.\n";
+				Logger::WriteMessage(forLogger.str().c_str());
+
+				// call getWordLengths on current line
+				result = sorter.getWordLengths(test);
+
+				// assert that the expected and observed are equal
+				Assert::IsTrue(expected.compare(result));
 			}
 		}
 
