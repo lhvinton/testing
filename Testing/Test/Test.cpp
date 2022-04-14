@@ -180,6 +180,7 @@ namespace Test
 				// some debug output so Lenora doesn't lose her mind
 				forLogger << "Running test case for string '" << test << "'.\n";
 				Logger::WriteMessage(forLogger.str().c_str());
+				forLogger.str(string());
 
 				// call getWordLengths on current line
 				result = sorter.getWordLengths(test);
@@ -255,8 +256,6 @@ namespace Test
 		* - if character has no morse translation print that character
 		* - a gift :)
 		* - https://www.cryptomuseum.com/radio/morse/
-		*  
-		* 
 		*/
 		TEST_METHOD(TestMorseTranslator) {
 			// setup
@@ -273,6 +272,7 @@ namespace Test
 				// some debug output so Lenora doesn't lose her mind
 				forLogger << "Running test case for string '" << test << "'.\n";
 				Logger::WriteMessage(forLogger.str().c_str());
+				forLogger.str(string());
 
 				// call getWordLengths on current line
 				result = sorter.inMorse(test);

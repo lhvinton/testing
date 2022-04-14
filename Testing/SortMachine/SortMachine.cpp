@@ -32,12 +32,17 @@ map<char, int> SortMachine::getLetterFrequencies(string input) {
 map<char, int> SortMachine::transformVowels(string input) {
 	map<char, int> frequencies;
 	char vowels[5] = { 'A', 'E', 'I', 'O', 'U' };
-	frequencies = getLetterFrequencies(input);
 	map<char, int>::iterator currentChar;
 
+	frequencies = getLetterFrequencies(input);
+
+	// for each vowel
 	for (int i = 0; i < sizeof(vowels); i++) {
 		currentChar = frequencies.find(vowels[i]);
+
+		// if map contains vowel
 		if (currentChar != frequencies.end()) {
+			// add count to that vowel + 1
 			frequencies[vowels[i] + 1] += currentChar->second;
 			frequencies.erase(currentChar);
 		}
