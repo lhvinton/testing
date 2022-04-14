@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Hibby\Desktop\testing\Testing\x64\Debug\SortMachine.exe</FullPath>
+      <FullPath>C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner proj\testing\Testing\x64\Debug\SortMachine.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\Hibby\Desktop\testing\Testing\x64\Debug\Test.dll</FullPath>
+      <FullPath>C:\Users\lokir\Documents\Classes\2021-2022\Spring\CSI 330 Software Development Methodologies\TDD\partner proj\testing\Testing\x64\Debug\Test.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

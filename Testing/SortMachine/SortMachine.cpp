@@ -1,6 +1,64 @@
 #include "SortMachine.h"
+#include <iostream>
 
 const char whiteSpaceChars[4] = {' ', '\n', '\t', '\r'};
+
+const map<char, string> morseMap = {
+	{'A', ".-"},
+	{'B', "-..."},
+	{'C', "-.-."},
+	{'D', "-.."},
+	{'E', "."},
+	{'F', "..-."},
+	{'G', "--."},
+	{'H', "...."},
+	{'I', ".."},
+	{'J', ".---"},
+	{'K', "-.-"},
+	{'L', ".-.."},
+	{'M', "--"},
+	{'N', "-."},
+	{'O', "---"},
+	{'P', ".--."},
+	{'Q', "--.-"},
+	{'R', ".-."},
+	{'S', "..."},
+	{'T', "-"},
+	{'U', "..-"},
+	{'V', "...-"},
+	{'W', ".--"},
+	{'X', "-..-"},
+	{'Y', "-.--"},
+	{'Z', "--.."},
+	{'1', ".----"},
+	{'2', "..---"},
+	{'3', "...--"},
+	{'4', "....-"},
+	{'5', "....."},
+	{'6', "-...."},
+	{'7', "--..."},
+	{'8', "---.."},
+	{'9', "----."},
+	{'0', "-----"},
+	{'.', ".-.-.-"},
+	{',', "--..--"},
+	{'?', "..--.."},
+	{'\'', ".----."},
+	{'!', "-.-.--"},
+	{'/', "-..-."},
+	{'(', "-.--."},
+	{')', "-.--.-"},
+	{'&', ".-..."},
+	{':', "---..."},
+	{';', "-.-.-."},
+	{'=', "-...-"},
+	{'+', ".-.-."},
+	{'-', "-"},
+	{'_', "..--.-"},
+	{'"', ".-..-."},
+	{'$', "...-..-"},
+	{'@', ".--.-."},
+};
 
 SortMachine::SortMachine()
 {
@@ -58,13 +116,7 @@ vector<int> SortMachine::getWordLengths(string input) {
 	for (int i = 0; i < input.size(); i++) {
 
 		// determine if current char is white space
-		bool isWhiteSpace = false;
-		for (int j = 0; j < size(whiteSpaceChars); j++) {
-			if (input[i] == whiteSpaceChars[j]) {
-				isWhiteSpace = true;
-				break;
-			}
-		}
+		bool isWhiteSpace = SortMachine::isWhiteSpace(input[i]);
 
 		// if current char is not white space, increment word size
 		if (!isWhiteSpace) {
@@ -82,16 +134,71 @@ vector<int> SortMachine::getWordLengths(string input) {
 		wordLengths.push_back(currentWordSize);
 	}
 
+	if (wordLengths.empty()) {
+		wordLengths = { 0 };
+	}
+
 	return wordLengths;
 }
 
 string SortMachine::inMorse(string input) {
-	return "... .... . . ... ....";
+	char previousChar = ' ';
+	string finalString = "";
+
+	for (int i = 0; i < input.size(); i++) {
+		char currentCar = input[i];
+		auto iter = morseMap.find(currentCar);
+		if (SortMachine::isWhiteSpace(currentCar)) {
+			if (!SortMachine::isWhiteSpace(previousChar)) {
+				finalString += "/ ";
+			}
+		}
+		else if (iter == morseMap.end()) {
+			finalString += currentCar + " ";
+		}
+		else {
+			finalString += iter->second + " ";
+		}
+		previousChar = currentCar;
+	}
+	return finalString;
 }
 
 bool SortMachine::isUpperVowel(char input) {
 	return (input == 'A' || input == 'E' || input == 'I'
 		|| input == 'O' || input == 'U');
+}
+
+bool SortMachine::isWhiteSpace(char input) {
+	for (int i = 0; i < size(whiteSpaceChars); i++) {
+		if (input == whiteSpaceChars[i]) {
+			return true;
+		}
+	}
+	return false;
+}
+
+string SortMachine::uselessFunction(string input) {
+	string finalString = "";
+
+	auto letters = getLetterFrequencies(input);
+	auto words = getWordLengths(input);
+	auto iter = letters.begin();
+
+	while (iter != letters.end()) {
+
+		for (int j = 0; j < iter->second; j++) {
+			if (words[0] == 0) {
+				words.erase(words.begin());
+				finalString += " ";
+			}
+			finalString += iter->first;
+			words[0]--;
+		}
+		iter++;
+	}
+
+	return finalString;
 }
 
 int main() {
