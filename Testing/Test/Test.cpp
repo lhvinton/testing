@@ -72,20 +72,19 @@ const tuple<string, map<char, int>> testVowelIncreaseStrings[9] = {
 
 const tuple<string, string> testMorse[8] = {
 	// single words
-	{"abc", ".- -... -.-."},
-	{"word", ".-- --- .-. -.."},
+	{"abc", "-.-. -... .-"},
+	{"word", "--- -.. .-- .-."},
 
-	//simple sentences
-	{"here is a sentence", ".... . .-. . / .. ... / .- / ... . -. - . -. -.-. ."},
-	{"abcdef ghijkl mnopq rstub wxyz", ".- -... -.-. -.. . ..-. / --. .... .. .--- -.- .-.. / -- -. --- .--. --.- / .-. ... - ..- -... / .-- -..- -.-- --.." },
+	//simple sentences intentional spelling mistake :)
+	{"here is a sentence", "- -. -. -.-. / . . / . / . . .- .-. .. ... ... ...."},
+	{"abcdef ghijkl mnopq rstub wxyz", "- -- --- --. --.- --.. / -. -.- -.-- -.-. -.. -..- / -... -... . .- .-- / .--- .--. .-. .-.. .. / ..- ..-. ... ...- ...."},
 
 	//punctuation
 	{", . ! ? - /", "--..-- / .-.-.- / -.-.-- / ..--.. / -....- / -..-."},
 
 	//punctuation in a sentence
-	{"Sphinx of black quartz, judge my vow!", "... .--. .... .. -. -..- / --- ..-. / -... .-.. .- -.-. -.- / --.- ..- .- .-. - --.. --..-- / .--- ..- -.. --. . / -- -.-- / ...- --- .-- -.-.--"},
+	{"Sphinx of black quartz, judge my vow!", "- -- --- --- --. --.- / --.. --..-- / -. -.- -.-- -.-. -.-.-- / -.. -..- -... . .- .- .-- / .--- .--. .-. .-.. .. / ..- ..- / ..-. ... ...- ...."},
 };
-
 
 const char whiteSpaceCharsTest[4] = { ' ', '\n', '\t', '\r'};
 namespace Test

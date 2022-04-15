@@ -93,7 +93,3 @@ bool SortMachine::isUpperVowel(char input) {
 	return (input == 'A' || input == 'E' || input == 'I'
 		|| input == 'O' || input == 'U');
 }
-
-int main() {
-	return 1;
-}
