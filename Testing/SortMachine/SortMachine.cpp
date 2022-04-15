@@ -200,7 +200,3 @@ string SortMachine::uselessFunction(string input) {
 
 	return finalString;
 }
-
-int main() {
-	return 1;
-}
