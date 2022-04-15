@@ -41,8 +41,8 @@ const tuple<string, vector<int>> testWords[9] = {
 	{"a a a a a a a a a a", {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}},
 	
 	//white space and empty
-	{"  \n\t  \n ", {}},
-	{"", {}},
+	{"  \n\t  \n ", {0}},
+	{"", {0}},
 	
 
 	//huge word
@@ -70,7 +70,7 @@ const tuple<string, map<char, int>> testVowelIncreaseStrings[9] = {
 	{ "BCDFGHJKLMNPQRSTVWXYZ", { {'B', 1}, {'C', 1}, {'D', 1}, {'F', 1}, {'G', 1}, {'H', 1}, {'J', 1}, {'K', 1}, {'L', 1}, {'M', 1}, {'N', 1}, {'P', 1}, {'Q', 1}, {'R', 1}, {'S', 1}, {'T', 1}, {'V', 1}, {'W', 1}, {'X', 1}, {'Y', 1}, {'Z', 1} } },
 };
 
-const tuple<string, string> testMorse[8] = {
+const tuple<string, string> testMorse[6] = {
 	// single words
 	{"abc", "-.-. -... .-"},
 	{"word", "--- -.. .-- .-."},
@@ -281,15 +281,15 @@ namespace Test
 			}
 		}
 
-		// helper methods
-		map<char, int> getBlankAlphabetMap() {
-			map<char, int> frequencies;
-
-			for (int i = 65; i < 90; i++) {
-				frequencies[(char)i] = 0;
-			}
-
-			return frequencies;
+		// this isn't really a test, just puts all the pieces together
+		// for useless functionality.
+		TEST_METHOD(TestAllTogetherNow) {
+			// setup
+			SortMachine sorter;
+			stringstream forLogger;
+			string input = "yar har har and stuff I guess idk.";
+			string output = sorter.uselessFunction(input);
+			Logger::WriteMessage(output.c_str());
 		}
 	};
 }

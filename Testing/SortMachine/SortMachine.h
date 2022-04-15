@@ -16,6 +16,8 @@ public:
 	map<char, int> transformVowels(string input);
 	vector<int> getWordLengths(string input);
 	string inMorse(string input);
+	bool isWhiteSpace(char input);
+	string uselessFunction(string input);
 
 private:
 	bool isUpperVowel(char input);
