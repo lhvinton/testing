@@ -53,7 +53,7 @@ const map<char, string> morseMap = {
 	{';', "-.-.-."},
 	{'=', "-...-"},
 	{'+', ".-.-."},
-	{'-', "-"},
+	{'-', "-....-"},
 	{'_', "..--.-"},
 	{'"', ".-..-."},
 	{'$', "...-..-"},
@@ -146,21 +146,26 @@ string SortMachine::inMorse(string input) {
 	string finalString = "";
 
 	for (int i = 0; i < input.size(); i++) {
-		char currentCar = input[i];
+		char currentCar = toupper(input[i]);
 		auto iter = morseMap.find(currentCar);
 		if (SortMachine::isWhiteSpace(currentCar)) {
 			if (!SortMachine::isWhiteSpace(previousChar)) {
-				finalString += "/ ";
+				finalString += "/";
 			}
 		}
 		else if (iter == morseMap.end()) {
-			finalString += currentCar + " ";
+			finalString += currentCar;
 		}
 		else {
-			finalString += iter->second + " ";
+			finalString += iter->second;
 		}
 		previousChar = currentCar;
+
+		if (i != size(input) - 1) {
+			finalString += " ";
+		}
 	}
+
 	return finalString;
 }
 
