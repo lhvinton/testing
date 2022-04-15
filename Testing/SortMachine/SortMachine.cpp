@@ -144,27 +144,41 @@ vector<int> SortMachine::getWordLengths(string input) {
 string SortMachine::inMorse(string input) {
 	char previousChar = ' ';
 	string finalString = "";
+	vector<string> individualLetters = {};
+	vector<int> wordBreaks = {};
 
 	for (int i = 0; i < input.size(); i++) {
 		char currentCar = toupper(input[i]);
 		auto iter = morseMap.find(currentCar);
 		if (SortMachine::isWhiteSpace(currentCar)) {
 			if (!SortMachine::isWhiteSpace(previousChar)) {
-				finalString += "/";
+				wordBreaks.push_back(i);
+				//individualLetters.push_back("/");
 			}
 		}
 		else if (iter == morseMap.end()) {
-			finalString += currentCar;
+			individualLetters.push_back("" + currentCar);
 		}
 		else {
-			finalString += iter->second;
+			individualLetters.push_back("" + iter->second);
 		}
-		previousChar = currentCar;
-
-		if (i != size(input) - 1) {
-			finalString += " ";
-		}
+		previousChar = currentCar;		
 	}
+
+	sort(individualLetters.begin(), individualLetters.end());
+
+	// instert slashes
+	for (int index : wordBreaks) {
+		auto itPos = individualLetters.begin() + index;
+		auto newIt = individualLetters.insert(itPos, "/");
+	}
+
+	for (string str : individualLetters) {
+		finalString += str + " ";
+	}
+
+	// trim trailing space
+	finalString.pop_back();
 
 	return finalString;
 }

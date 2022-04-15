@@ -77,29 +77,13 @@ const tuple<string, string> testMorse[6] = {
 
 	//simple sentences intentional spelling mistake :)
 	{"here is a sentence", "- -. -. -.-. / . . / . / . . .- .-. .. ... ... ...."},
-	{"abcdef ghijkl mnopq rstub wxyz", "- -- --- --. --.- --.. / -. -.- -.-- -.-. -.. -..- / -... -... . .- .-- / .--- .--. .-. .-.. .. / ..- ..-. ... ...- ...."},
+	{"abcdef ghijkl mnopq rstub wxyz", "- -- --- --. --.- --.. / -. -.- -.-- -.-. -.. -..- / -... -... . .- .-- / .--- .--. .-. .-.. .. / ..- ..-. ... ...."},
 
 	//punctuation
-	{", . ! ? - /", "--..-- / .-.-.- / -.-.-- / ..--.. / -....- / -..-."},
+	{", . ! ? - /", "--..-- / -.-.-- / -..-. / -....- / .-.-.- / ..--.."},
 
 	//punctuation in a sentence
 	{"Sphinx of black quartz, judge my vow!", "- -- --- --- --. --.- / --.. --..-- / -. -.- -.-- -.-. -.-.-- / -.. -..- -... . .- .- .-- / .--- .--. .-. .-.. .. / ..- ..- / ..-. ... ...- ...."},
-};
-
-const tuple<string, string> testRealMorse[6] = {
-	// single words
-	{"abc", ".- -... -.-."},
-	{"word", ".-- --- .-. -.."},
-
-	//simple sentences intentional spelling mistake :)
-	{"here is a sentence", ".... . .-. . / .. ... / .- / ... . -. - . -. -.-. ."},
-	{"abcdef ghijkl mnopq rstub wxyz", ".- -... -.-. -.. . ..-. / --. .... .. .--- -.- .-.. / -- -. --- .--. --.- / .-. ... - ..- -... / .-- -..- -.-- --.."},
-
-	//punctuation
-	{", . ! ? - /", "--..-- / .-.-.- / -.-.-- / ..--.. / -....- / -..-."},
-
-	//punctuation in a sentence
-	{"Sphinx of black quartz, judge my vow!", "... .--. .... .. -. -..- / --- ..-. / -... .-.. .- -.-. -.- / --.- ..- .- .-. - --.. --..-- / .--- ..- -.. --. . / -- -.-- / ...- --- .-- -.-.--"},
 };
 
 const char whiteSpaceCharsTest[4] = { ' ', '\n', '\t', '\r'};
@@ -279,10 +263,10 @@ namespace Test
 			string test, expected, result;
 
 			// loop through all test cases
-			for (int i = 0; i < size(testRealMorse); i++) {
+			for (int i = 0; i < size(testMorse); i++) {
 				//current test string and expected string
-				test = get<0>(testRealMorse[i]);
-				expected = get<1>(testRealMorse[i]);
+				test = get<0>(testMorse[i]);
+				expected = get<1>(testMorse[i]);
 
 				// some debug output so Lenora doesn't lose her mind
 				forLogger << "Running test case for string '" << test << "'.\n";
